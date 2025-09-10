@@ -4,9 +4,10 @@ import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+// In app/page.js, replace the old projectsData array with this one.
+
 const projectsData = [
   {
-    detailsUrl: '/projects/face-attendance',
     imageSrc: 'https://placehold.co/600x400/0d1117/29c53d?text=Face+Attendance',
     title: 'Live Student Attendance',
     description: 'Real-time attendance system with face recognition and automated Excel report generation.',
@@ -14,7 +15,6 @@ const projectsData = [
     githubUrl: 'https://github.com/tharushaudana/python-student-attendance-by-face-recognition',
   },
   {
-    detailsUrl: null, // Add a URL when the page is created
     imageSrc: 'https://placehold.co/600x400/0d1117/29c53d?text=Flutter+Face+Auth',
     title: 'Flutter Face Auth',
     description: 'Mobile face authentication app with FaceNet512 encoding, cosine similarity, and Firebase integration.',
@@ -22,7 +22,6 @@ const projectsData = [
     githubUrl: 'https://github.com/tharushaudana/flutter_face_auth_2',
   },
   {
-    detailsUrl: null,
     imageSrc: 'https://placehold.co/600x400/0d1117/29c53d?text=Gemly',
     title: 'Gemly',
     description: 'Jewellery e-commerce platform with payment gateway, product recommendations, and admin dashboard.',
@@ -30,7 +29,6 @@ const projectsData = [
     githubUrl: 'https://github.com/tharushaudana/Gemly',
   },
   {
-    detailsUrl: null,
     imageSrc: 'https://placehold.co/600x400/0d1117/29c53d?text=GeoLand+Drive',
     title: 'GeoLand Drive',
     description: 'Web tool for land measurement using KML files with offline access, interactive maps, and area calculations.',
@@ -38,7 +36,6 @@ const projectsData = [
     githubUrl: 'https://github.com/tharushaudana/geolanddrive',
   },
   {
-    detailsUrl: null,
     imageSrc: 'https://placehold.co/600x400/0d1117/29c53d?text=Wuusu+Shop',
     title: 'Wuusu Shop',
     description: 'Shop management system with Flutter desktop client and Laravel + React web admin panel.',
@@ -46,7 +43,6 @@ const projectsData = [
     githubUrl: null,
   },
   {
-    detailsUrl: null,
     imageSrc: 'https://placehold.co/600x400/0d1117/29c53d?text=IoT+Net',
     title: 'IoT Net',
     description: 'Real-time IoT platform for ESP8266/ESP32 with device monitoring, automation, and secure backend API.',
@@ -54,7 +50,6 @@ const projectsData = [
     githubUrl: null,
   },
   {
-    detailsUrl: null,
     imageSrc: 'https://placehold.co/600x400/0d1117/29c53d?text=SMS+Voting+App',
     title: 'SMS Voting App',
     description: 'Cross-platform Flutter app for automated bulk SMS voting in TV competitions.',
@@ -62,7 +57,6 @@ const projectsData = [
     githubUrl: 'https://github.com/tharushaudana/multi_sms_sender_flutter',
   },
   {
-    detailsUrl: null,
     imageSrc: 'https://placehold.co/600x400/0d1117/29c53d?text=Firebase+ESP-IDF',
     title: 'Firebase ESP-IDF Library',
     description: 'Non-blocking Firebase client for ESP32 with real-time streaming and JSON CRUD support.',
@@ -70,7 +64,6 @@ const projectsData = [
     githubUrl: 'https://github.com/tharushaudana/esp-idf-firebase-with-stream',
   },
   {
-    detailsUrl: null,
     imageSrc: 'https://placehold.co/600x400/0d1117/29c53d?text=ESP+Security',
     title: 'ESP Program Security Guard',
     description: 'Firmware protection system for ESP devices preventing unauthorized copying and reflashing.',
@@ -78,7 +71,6 @@ const projectsData = [
     githubUrl: 'https://github.com/tharushaudana/esp-program-protector',
   },
   {
-    detailsUrl: null,
     imageSrc: 'https://placehold.co/600x400/0d1117/29c53d?text=GitCCPy',
     title: 'GitCCPy',
     description: 'Python CLI utility to deploy via FTP by copying only files changed between Git commits.',
@@ -86,7 +78,6 @@ const projectsData = [
     githubUrl: 'https://github.com/tharushaudana/git-change-copy-python',
   },
   {
-    detailsUrl: null,
     imageSrc: 'https://placehold.co/600x400/0d1117/29c53d?text=InfinityFree+Bypasser',
     title: 'InfinityFree Bypasser',
     description: 'Flutter app that bypasses InfinityFree.com free-plan HTTP restrictions using dynamic cookies.',
@@ -329,44 +320,62 @@ export default function PortfolioPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="section-title-wrapper"><h2 className="section-title" data-text="My Projects"></h2></div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projectsData.map((project, index) => (
-                <div
-                  key={project.title}
-                  className="project-card project-card-bg rounded-lg overflow-hidden animated-element"
-                  style={{ transitionDelay: `${(index + 1) * 200}ms` }}
-                >
-                  <img className="w-full h-48 object-cover" src={project.imageSrc} alt={project.title} />
-                  <div className="p-6 flex flex-col justify-between h-full">
-                    <div>
-                      <h3 className="text-xl font-bold mb-2 text-white">{project.title}</h3>
-                      <p className="text-gray-400 mb-4">{project.description}</p>
-                    </div>
-                    <div className="flex justify-between items-center mt-auto pt-4">
-                      <span className="text-sm font-semibold text-green-400">{project.tags}</span>
-                      <div className="flex items-center gap-4">
-                        {/* Conditionally render "View Details" link */}
-                        {project.detailsUrl && (
-                          <Link href={project.detailsUrl} className="text-sm text-gray-400 hover:text-white font-fira transition-colors">
-                            Details
-                          </Link>
-                        )}
-                        {/* Conditionally render GitHub link */}
-                        {project.githubUrl && (
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-white"
-                            aria-label="GitHub"
-                          >
-                            <i className="fab fa-github fa-lg"></i>
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
+{projectsData.map((project, index) => (
+  <div
+    key={project.title}
+    className="project-card project-card-bg rounded-lg overflow-hidden animated-element flex flex-col"
+    style={{ transitionDelay: `${(index + 1) * 200}ms` }}
+  >
+    {/* Calm terminal-style background with title */}
+    <div
+      className="w-full h-48 flex items-center justify-center relative"
+      style={{
+        backgroundColor: '#0d1117', // dark base
+        backgroundImage: `repeating-linear-gradient(
+          0deg,
+          #0d1117,
+          #0d1117 4px,
+          rgba(41, 197, 61, 0.05) 4px,
+          rgba(41, 197, 61, 0.05) 8px
+        )`,
+      }}
+    >
+      <h3 className="text-white text-2xl font-bold font-mono text-center px-4">
+        {project.title}
+      </h3>
+    </div>
+
+    <div className="p-6 flex flex-col flex-grow">
+      <p className="text-gray-400 mb-4 flex-grow">{project.description}</p>
+
+      <div className="flex justify-between items-center mt-auto pt-4 border-t border-gray-700/50">
+        <span className="text-sm font-semibold text-green-400">{project.tags}</span>
+        <div className="flex items-center gap-4">
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white"
+              aria-label="GitHub"
+            >
+              <i className="fab fa-github fa-lg"></i>
+            </a>
+          )}
+          <Link
+            href={`/projects/${project.title.split(" ").join("-").toLowerCase()}`}
+            className="text-gray-400 hover:text-white"
+            aria-label="View Project Details"
+          >
+            <i className="fas fa-external-link-alt fa-lg"></i>
+          </Link>
+        </div>
+      </div>
+    </div>
+  </div>
+))}
+
+
             </div>
           </div>
         </section>
@@ -417,7 +426,7 @@ export default function PortfolioPage() {
             <div className="flex justify-center gap-10 animated-element" style={{ transitionDelay: '200ms' }}>
               <a href="https://www.github.com/tharushaudana" className="text-gray-400 hover:text-white text-4xl" aria-label="GitHub Profile"><i className="fab fa-github"></i></a>
               <a href="https://www.linkedin.com/in/tharushaudana" className="text-gray-400 hover:text-white text-4xl" aria-label="LinkedIn Profile"><i className="fab fa-linkedin"></i></a>
-              <a href="mailto:tharushaudana@gmail.com" className="text-gray-400 hover:text-white text-4xl" aria-label="Email"><i className="fas fa-envelope"></i></a>
+              <a href="mailto:tharusha.udana529@gmail.com" className="text-gray-400 hover:text-white text-4xl" aria-label="Email"><i className="fas fa-envelope"></i></a>
             </div>
           </div>
         </section>
