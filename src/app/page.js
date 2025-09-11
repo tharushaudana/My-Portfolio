@@ -219,7 +219,7 @@ export default function PortfolioPage() {
                 <div className="relative">
                   <Image
                     id="hero-img"
-                    className="mx-auto rounded-full border-4 border-[--matrix-green] shadow-2xl w-64 h-64 md:w-80 md:h-80 object-cover"
+                    className="mx-auto rounded-full border-4 border-[var(--matrix-green)] shadow-2xl w-64 h-64 md:w-80 md:h-80 object-cover"
                     src="/assets/me.jpg"
                     alt="Profile Picture of Tharusha Udana"
                     width={320}
@@ -320,62 +320,60 @@ export default function PortfolioPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="section-title-wrapper"><h2 className="section-title" data-text="My Projects"></h2></div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-{projectsData.map((project, index) => (
-  <div
-    key={project.title}
-    className="project-card project-card-bg rounded-lg overflow-hidden animated-element flex flex-col"
-    style={{ transitionDelay: `${(index + 1) * 200}ms` }}
-  >
-    {/* Calm terminal-style background with title */}
-    <div
-      className="w-full h-48 flex items-center justify-center relative"
-      style={{
-        backgroundColor: '#0d1117', // dark base
-        backgroundImage: `repeating-linear-gradient(
-          0deg,
-          #0d1117,
-          #0d1117 4px,
-          rgba(41, 197, 61, 0.05) 4px,
-          rgba(41, 197, 61, 0.05) 8px
-        )`,
-      }}
-    >
-      <h3 className="text-white text-2xl font-bold font-mono text-center px-4">
-        {project.title}
-      </h3>
-    </div>
+              {projectsData.map((project, index) => (
+                <div
+                  key={project.title}
+                  className="project-card project-card-bg rounded-lg overflow-hidden animated-element flex flex-col"
+                  style={{ transitionDelay: `${(index + 1) * 200}ms` }}
+                >
+                  {/* Calm terminal-style background with title */}
+                  <div
+                    className="w-full h-48 flex items-center justify-center relative"
+                    style={{
+                      backgroundColor: '#0d1117', // dark base
+                      backgroundImage: `repeating-linear-gradient(
+                        0deg,
+                        #0d1117,
+                        #0d1117 4px,
+                        rgba(41, 197, 61, 0.05) 4px,
+                        rgba(41, 197, 61, 0.05) 8px
+                      )`,
+                    }}
+                  >
+                    <h3 className="text-white text-2xl font-bold font-mono text-center px-4">
+                      {project.title}
+                    </h3>
+                  </div>
 
-    <div className="p-6 flex flex-col flex-grow">
-      <p className="text-gray-400 mb-4 flex-grow">{project.description}</p>
+                  <div className="p-6 flex flex-col flex-grow">
+                    <p className="text-gray-400 mb-4 flex-grow">{project.description}</p>
 
-      <div className="flex justify-between items-center mt-auto pt-4 border-t border-gray-700/50">
-        <span className="text-sm font-semibold text-green-400">{project.tags}</span>
-        <div className="flex items-center gap-4">
-          {project.githubUrl && (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white"
-              aria-label="GitHub"
-            >
-              <i className="fab fa-github fa-lg"></i>
-            </a>
-          )}
-          <Link
-            href={`/projects/${project.title.split(" ").join("-").toLowerCase()}`}
-            className="text-gray-400 hover:text-white"
-            aria-label="View Project Details"
-          >
-            <i className="fas fa-external-link-alt fa-lg"></i>
-          </Link>
-        </div>
-      </div>
-    </div>
-  </div>
-))}
-
-
+                    <div className="flex justify-between items-center mt-auto pt-4 border-t border-gray-700/50">
+                      <span className="text-sm font-semibold text-green-400">{project.tags}</span>
+                      <div className="flex items-center gap-4">
+                        {project.githubUrl && (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-400 hover:text-white"
+                            aria-label="GitHub"
+                          >
+                            <i className="fab fa-github fa-lg"></i>
+                          </a>
+                        )}
+                        <Link
+                          href={`/projects/${project.title.split(" ").join("-").toLowerCase()}`}
+                          className="text-gray-400 hover:text-white"
+                          aria-label="View Project Details"
+                        >
+                          <i className="fas fa-external-link-alt fa-lg"></i>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
