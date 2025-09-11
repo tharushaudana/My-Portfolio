@@ -3,6 +3,7 @@ const nextConfig = {
   images: {
     domains: ["placehold.co"], // ✅ allow this domain
   },
+  output: 'export'
 };
 
 export default nextConfig;
