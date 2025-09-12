@@ -16,7 +16,6 @@ It features a **unique terminal-inspired interface** that represents my style as
 ## 🛠️ Tech Stack
 - **Framework:** Next.js
 - **Styling:** Tailwind CSS
-- **Deployment:** Vercel / Custom Hosting (udana.dev)
 
 ## 📂 Project Setup
 To run locally:
