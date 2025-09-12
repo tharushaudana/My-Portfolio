@@ -47,7 +47,7 @@ npm run export
 
 ## 📸 Preview
 
-*(Add screenshot/gif of your terminal-style portfolio here)*
+![Portfolio Preview](./preview.png)
 
 ---
 
